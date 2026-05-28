@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Tech & Engineering Facts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #e0e0e0;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+            border-radius: 20px;
+            padding: 60px 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            color: #b0b0b0;
+            font-weight: 300;
+        }
+
+        .content {
+            margin-bottom: 40px;
+        }
+
+        .fact-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(0, 212, 255, 0.2);
+            border-radius: 15px;
+            padding: 40px;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 30px;
+            animation: slideIn 0.4s ease-out;
+            transition: all 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fact-box:hover {
+            border-color: rgba(0, 212, 255, 0.4);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px rgba(0, 212, 255, 0.1);
+        }
+
+        .fact-text {
+            font-size: 1.3em;
+            line-height: 1.8;
+            color: #e0e0e0;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+
+        .fact-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 40px;
+            font-size: 1.1em;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            color: #0f0f0f;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 36px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-primary:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #00d4ff;
+            border: 2px solid #00d4ff;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 212, 255, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 36px rgba(0, 212, 255, 0.2);
+        }
+
+        .btn-secondary:active {
+            transform: translateY(-1px);
+        }
+
+        .counter {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.95em;
+            color: #808080;
+        }
+
+        .counter strong {
+            color: #00d4ff;
+            font-size: 1.1em;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9em;
+            color: #606060;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: #00d4ff;
+            border-radius: 50%;
+            animation: loading 1.4s infinite;
+        }
+
+        @keyframes loading {
+            0%, 100% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 25px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .fact-box {
+                min-height: 160px;
+                padding: 30px;
+            }
+
+            .fact-text {
+                font-size: 1.1em;
+            }
+
+            .btn {
+                padding: 14px 30px;
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 1.6em;
+            }
+
+            .fact-box {
+                min-height: 140px;
+                padding: 20px;
+            }
+
+            .fact-text {
+                font-size: 1em;
+                line-height: 1.6;
+            }
+
+            .button-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .btn {
+                width: 100%;
+                padding: 14px 20px;
+                font-size: 0.95em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚡ Tech & Engineering Facts</h1>
+            <p>Discover fascinating insights about technology and engineering</p>
+        </div>
+
+        <div class="content">
+            <div class="fact-box">
+                <div>
+                    <span class="fact-icon">💡</span>
+                    <p class="fact-text" id="factDisplay">Click the button below to discover your first tech fact!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button class="btn btn-primary" onclick="displayRandomFact()">Generate Fact</button>
+            <button class="btn btn-secondary" onclick="copyFact()">Copy Fact</button>
+        </div>
+
+        <div class="counter">
+            Facts viewed: <strong id="counter">0</strong>
+        </div>
+
+        <div class="footer">
+            <p>💻 Explore the world of innovation • Built with modern web technologies</p>
+        </div>
+    </div>
+
+    <script>
+        // Comprehensive array of tech and engineering facts
+        const techFacts = [
+            "The first computer bug was an actual moth found in a computer by Grace Hopper in 1945.",
+            "The '@' symbol used in emails is called 'at sign' in English, but 'monkey tail' in Dutch and 'little duck' in Greek.",
+            "One gigabyte is equivalent to approximately 1 billion bytes, or 1,024 megabytes.",
+            "The first webcam was created to monitor a coffee pot at Cambridge University so researchers could check if it was full before leaving their desks.",
+            "Quantum computers can perform certain calculations exponentially faster than classical computers due to superposition and entanglement.",
+            "The average person spends about 1/3 of their lives sleeping, while CPUs spend a significant portion in low-power states.",
+            "Artificial Intelligence was formally established as an academic discipline in 1956 at the Dartmouth Summer Research Project.",
+            "The world's first website is still online at http://info.cern.ch, the original home of the World Wide Web.",
+            "A smartphone today has more computing power than all the computers used to put man on the moon in 1969.",
+            "Blockchain technology, the foundation of cryptocurrencies, uses cryptographic hashing to create immutable records.",
+            "The QWERTY keyboard layout was designed to prevent mechanical typewriter jams by separating frequently used letter combinations.",
+            "Machine learning algorithms can now recognize images and faces with over 99% accuracy in some cases.",
+            "The term 'debugging' originated when programmers had to literally remove insects from room-sized computers.",
+            "Cloud computing allows organizations to scale their infrastructure on demand without maintaining physical servers.",
+            "DNA can store information at a density of 215 petabytes per gram, making it a potential future storage solution.",
+            "The first iPhone was released in 2007 and revolutionized mobile computing and user interface design.",
+            "5G networks are expected to be 100 times faster than 4G, enabling new technologies like autonomous vehicles.",
+            "The Internet of Things (IoT) connects billions of physical devices that collect and share data over networks.",
+            "Augmented Reality overlays digital information onto the real world, enhancing user perception and interaction.",
+            "Virtual Reality creates entirely immersive digital environments by tricking the brain into perceiving a different reality.",
+            "GraphQL is a query language that allows clients to request exactly the data they need, improving API efficiency.",
+            "Containerization using Docker allows applications to run consistently across different computing environments.",
+            "Kubernetes orchestrates and automates the deployment, scaling, and management of containerized applications.",
+            "The semiconductor industry is racing toward 1-nanometer chip technology, pushing the limits of Moore's Law.",
+            "Quantum entanglement allows two particles to be connected such that measuring one instantly affects the other.",
+            "Neural networks are inspired by the structure and function of biological neurons in the brain.",
+            "The Python programming language was named after the British comedy series Monty Python.",
+            "GitOps is a paradigm that uses Git as the single source of truth for infrastructure and application deployment.",
+            "Microservices architecture breaks applications into small, loosely coupled, independently deployable services.",
+            "Edge computing processes data closer to the source rather than sending it all to centralized data centers.",
+            "Cybersecurity threats include phishing, malware, ransomware, and zero-day vulnerabilities.",
+            "Zero-trust security assumes that threats can exist both inside and outside the network.",
+            "Biometric authentication uses unique physical or behavioral characteristics like fingerprints and facial recognition.",
+            "Blockchain uses a distributed ledger to record transactions securely and transparently without a central authority.",
+            "Smart contracts are self-executing code deployed on blockchains that automatically execute when conditions are met.",
+            "WebAssembly (WASM) allows high-performance code written in various languages to run in web browsers.",
+            "CUDA is NVIDIA's parallel computing platform that dramatically accelerates computation using GPUs.",
+            "Recurrent Neural Networks (RNNs) are designed to process sequential data and exhibit temporal dynamics.",
+            "Transformers are a deep learning architecture that uses attention mechanisms, powering modern language models.",
+            "The RISC-V instruction set architecture is an open-standard that could revolutionize processor design.",
+            "Photonic computing uses photons instead of electrons to process information, potentially enabling faster computers.",
+            "Neuromorphic engineering creates computer hardware that mimics the structure and operation of biological brains.",
+            "The Internet was originally designed as a decentralized military communication system called ARPANET.",
+            "Fiber optic cables use light signals to transmit data, achieving transmission speeds faster than copper.",
+            "The Mars Rover's software is written in multiple programming languages and must be remotely updated.",
+            "Artificial Neural Networks with multiple layers are called 'deep' neural networks, enabling deep learning.",
+            "Augmented reality glasses like Microsoft HoloLens blend digital holograms seamlessly into the physical environment.",
+            "The first computer program was written by Ada Lovelace for the Analytical Engine in 1843.",
+            "Solid State Drives (SSDs) have no moving parts, making them faster and more reliable than traditional hard drives."
+        ];
+
+        let factsViewed = 0;
+        let currentFact = '';
+
+        function getRandomFact() {
+            return techFacts[Math.floor(Math.random() * techFacts.length)];
+        }
+
+        function displayRandomFact() {
+            currentFact = getRandomFact();
+            const factDisplay = document.getElementById('factDisplay');
+            
+            // Add animation effect
+            factDisplay.style.opacity = '0';
+            
+            setTimeout(() => {
+                factDisplay.textContent = currentFact;
+                factDisplay.style.transition = 'opacity 0.4s ease-in';
+                factDisplay.style.opacity = '1';
+                factsViewed++;
+                updateCounter();
+            }, 200);
+        }
+
+        function updateCounter() {
+            document.getElementById('counter').textContent = factsViewed;
+        }
+
+        function copyFact() {
+            if (currentFact) {
+                navigator.clipboard.writeText(currentFact).then(() => {
+                    const btn = event.target;
+                    const originalText = btn.textContent;
+                    btn.textContent = '✓ Copied!';
+                    btn.style.background = 'rgba(0, 212, 255, 0.2)';
+                    
+                    setTimeout(() => {
+                        btn.textContent = originalText;
+                        btn.style.background = '';
+                    }, 2000);
+                }).catch(() => {
+                    alert('Failed to copy to clipboard');
+                });
+            } else {
+                alert('Generate a fact first!');
+            }
+        }
+
+        // Display initial fact on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            displayRandomFact();
+        });
+    </script>
+</body>
+</html>
